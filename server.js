@@ -14,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 
+
 // Separate connections for local and Atlas databases
 const localConnection = mongoose.createConnection(process.env.MONGO_URI);
 
@@ -39,6 +40,10 @@ app.use('/comprehension', comprehensionRoutes);
 
 
 app.use(errorHandler);
+
+app.get('/', (req, res) => {
+  res.send('Welcome to the Super Assistant Backend!');
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
